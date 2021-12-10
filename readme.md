@@ -46,10 +46,20 @@ az containerapp env create \
   --target-port 80 \
   --ingress 'external' \
   --query configuration.ingress.fqdn
+  #
+  # Credentials can be obtained with the following CLI command
+  # az acr credential show --name dohoneyfastapiacr
+  #
+  --registry-username  $REGISTRY_USERNAME
+  --registry-password $REGISTRY_PASSWORD
+  --debug
+
 
 ```
 
-Great Articles 
- Using Azure Bicep - https://www.thorsten-hans.com/how-to-deploy-azure-container-apps-with-bicep/
+## Great Articles 
+ Using Azure Bicep - https://www.thorsten-hans.com/how-to-deploy-azure-container-apps-with-bicep
+ 
  Using ACA Scaling - https://docs.microsoft.com/en-us/azure/container-apps/scale-app
+ 
  Decompile ARM to Bicep - https://docs.microsoft.com/en-us/azure/azure-resource-manager/bicep/decompile?tabs=azure-cli
