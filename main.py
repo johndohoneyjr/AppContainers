@@ -9,6 +9,9 @@ health_good = {"status": "healthy"}
 def health_check():
     return json.dumps(health_good)
 
+@app.get("/hello")
+def say_hello():
+    return { "message" : "Say Hello" }
 
 @app.get("/items/{item_id}")
 def item(item_id: int, q: Optional[str] = None):
