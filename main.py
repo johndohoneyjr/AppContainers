@@ -5,14 +5,16 @@ import logging
 from opencensus.ext.azure.log_exporter import AzureLogHandler
 import time
 
-logger = logging.getLogger(__name__)
-logger.addHandler(AzureLogHandler(connection_string='InstrumentationKey=a0a31278-af1a-4825-8e3d-226fbe8bcabe;IngestionEndpoint=https://westus-0.in.applicationinsights.azure.com/;LiveEndpoint=https://westus.livediagnostics.monitor.azure.com/'))
-
-logger.setLevel(logging.INFO)
-
 app = FastAPI()
 health_good = {"status": "healthy"}
 my_greeting = {"message": "Hello"}
+
+logger = logging.getLogger(__name__)
+logger.addHandler(AzureLogHandler(
+    connection_string='InstrumentationKey=a0a31278-af1a-4825-8e3d-226fbe8bcabe')
+)
+logger.setLevel(logging.INFO)
+
 
 @app.get("/health")
 def health_check():
